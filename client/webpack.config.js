@@ -66,8 +66,10 @@ module.exports = (_, argv) => ({
       name: "product",
       filename: "remoteEntry.js",
       remotes: {
-        admin: "admin@http://localhost:4000/remoteEntry.js",
-        cart: "cart@http://localhost:3003/remoteEntry.js",
+        // admin: "admin@http://localhost:4000/remoteEntry.js",
+        admin: "admin@https://ecom-admin-app-six.vercel.app/remoteEntry.js",
+        // cart: "cart@http://localhost:3003/remoteEntry.js",
+        cart: "cart@https://ecom-cart-app-client.vercel.app/remoteEntry.js",
       },
       exposes: {
         "./App": "./src/App.tsx"
