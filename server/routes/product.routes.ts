@@ -1,6 +1,6 @@
 import express from "express"
 import * as productController from "../controllers/product.controller"
-import { protectedRoute, restrict } from "matic-ui"
+import { protectedRoute, restrict } from "../utils/protected"
 
 const PRODUCT_ROUTER = express.Router()
 
