@@ -16,8 +16,8 @@ interface IRequest extends Request {
 
 export const protectedRoute = asyncHandler(async (req: IRequest, res: Response, next: NextFunction): Promise<any> => {
 
-    if (!req.cookies.user) {
-        return res.status(404).json({ message: "No cookie found" })
+    if (!req.headers.authorization) {
+        return res.status(404).json({ message: "No token found" })
     }
 
     const JWT_KEY = process.env.JWT_KEY
@@ -25,7 +25,7 @@ export const protectedRoute = asyncHandler(async (req: IRequest, res: Response, 
         return res.status(404).json({ message: "JWT key not found" })
     }
 
-    jwt.verify(req.cookies.user, JWT_KEY, (err: VerifyErrors | null, decoded: any) => {
+    jwt.verify(req.headers.authorization, JWT_KEY, (err: VerifyErrors | null, decoded: any) => {
         if (err) {
             if (err.name === 'TokenExpiredError') {
                 return res.status(401).json({ message: "Token expired" });
