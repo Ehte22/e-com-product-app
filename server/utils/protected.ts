@@ -15,6 +15,7 @@ interface IRequest extends Request {
 }
 
 export const protectedRoute = asyncHandler(async (req: IRequest, res: Response, next: NextFunction): Promise<any> => {
+
     if (!req.cookies.user) {
         return res.status(404).json({ message: "No cookie found" })
     }

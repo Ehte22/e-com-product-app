@@ -12,7 +12,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors({
-    origin: "https://e-com-main-app.vercel.app",
+    origin: true,
     credentials: true
 }));
 app.use(cookieParser())
